@@ -287,7 +287,7 @@ const CV = ({ data }) => (
         </div>
       </div>
       <div className="CV__qrcode">
-        <QRCode value="https://michal.wrzosek.pl/cv" />
+        <QRCode value={data.qrCodeValue} />
       </div>
     </div>
   </div>
@@ -295,6 +295,7 @@ const CV = ({ data }) => (
 
 CV.propTypes = {
   data: PropTypes.shape({
+    qrCodeValue: PropTypes.string.isRequired,
     person: PropTypes.shape({
       avatarImg: PropTypes.string.isRequired,
       fullName: PropTypes.string.isRequired,
