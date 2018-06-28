@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import mainImage from './main-image.jpg';
-import './App.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import mainImage from './main-image.jpg'
+import './index.css'
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="Home">
         <img
           src={mainImage}
-          className="App__main-image"
+          className="Home__main-image"
           alt="Michał flying over Tokyo"
         />
-        <div className="App__name">
+        <div className="Home__name">
           Michał Wrzosek
         </div>
-        <div className="App__subtitle">
+        <div className="Home__subtitle">
           Entrepreneur, Web Consultant & Programmer
         </div>
-        <div className="App__links">
+        <div className="Home__links">
           <a
             href="https://github.com/michal-wrzosek"
             taget="_blank"
             title="My GitHub"
-            className="App__links__link"
+            className="Home__links__link"
           >
             <i className="fab fa-github-square" />
           </a>
@@ -31,7 +33,7 @@ class App extends Component {
             href="https://www.facebook.com/xfor.artworks"
             taget="_blank"
             title="My Facebook"
-            className="App__links__link"
+            className="Home__links__link"
           >
             <i className="fab fa-facebook-square" />
           </a>
@@ -40,7 +42,7 @@ class App extends Component {
             href="https://www.linkedin.com/in/michal-wrzosek-cv/"
             taget="_blank"
             title="My LinkeIn"
-            className="App__links__link"
+            className="Home__links__link"
           >
             <i className="fab fa-linkedin" />
           </a>
@@ -49,7 +51,7 @@ class App extends Component {
             href="https://www.youtube.com/channel/UC7BOX17vTKwd6sYqwf96rNQ"
             taget="_blank"
             title="My YouTube"
-            className="App__links__link"
+            className="Home__links__link"
           >
             <i className="fab fa-youtube-square" />
           </a>
@@ -58,7 +60,7 @@ class App extends Component {
             href="https://www.instagram.com/xfor/"
             taget="_blank"
             title="My Instagram"
-            className="App__links__link"
+            className="Home__links__link"
           >
             <i className="fab fa-instagram" />
           </a>
@@ -67,44 +69,58 @@ class App extends Component {
             href="https://twitter.com/xforartworks"
             taget="_blank"
             title="My Twitter"
-            className="App__links__link"
+            className="Home__links__link"
           >
             <i className="fab fa-twitter-square" />
           </a>
         </div>
 
-        <div className="App__contact">
-          <div className="App__contact__detail">
-            <div className="App__contact__detail__icon">
+        <div className="Home__contact">
+          <div className="Home__contact__detail">
+            <div className="Home__contact__detail__icon">
               <i className="fas fa-envelope" />
             </div>
-            <div className="App__contact__detail__text">
+            <div className="Home__contact__detail__text">
               michal@wrzosek.pl
             </div>
           </div>
 
-          <div className="App__contact__detail">
-            <div className="App__contact__detail__icon">
+          <div className="Home__contact__detail">
+            <div className="Home__contact__detail__icon">
               <i className="fas fa-phone" />
             </div>
-            <div className="App__contact__detail__text">
+            <div className="Home__contact__detail__text">
               +48 690-56-26-46
             </div>
           </div>
 
-          <div className="App__contact__detail">
-            <div className="App__contact__detail__icon">
+          <div className="Home__contact__detail">
+            <div className="Home__contact__detail__icon">
               <i className="fas fa-map-marker-alt" />
             </div>
-            <div className="App__contact__detail__text">
+            <div className="Home__contact__detail__text">
               ul. Etiudy Rewolucyjnej 48 lok. 2<br />
               02-647 Warszawa, POLAND
             </div>
           </div>
         </div>
+
+        <div className="Home__buttons">
+          <Link
+            to="/cv"
+            title="CV"
+            className="Home__buttons__button"
+          >
+            Show CV
+          </Link>
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+Home.propTypes = {
+  match: PropTypes.object.isRequired
+}
+
+export default Home;

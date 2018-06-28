@@ -1,11 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display:700');
-
-.App {
+.Home {
   max-width: 320px;
   padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  color: #1C1C1C;
 
   &__main-image {
     width: 100%;
@@ -47,8 +42,8 @@
     }
   }
 
-
   &__contact {
+    margin-bottom: 20px;
 
     &__detail {
       display: flex;
@@ -66,4 +61,20 @@
       }
     }
   }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+
+    &__button {
+      display: block;
+      border-right: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #1C1C1C;
+      color: #FFF;
+    }
+  }
+
 }
