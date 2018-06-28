@@ -11,7 +11,7 @@ import avatar from './avatar.jpg'
 class App extends Component {
   render() {
     const cvData = {
-      qrCodeValue: "http://michal.wrzosek.pl/cv",
+      qrCodeValue: "http://michal.wrzosek.pl",
       person: {
         avatarImg: avatar,
         fullName: "Michał Wrzosek",
