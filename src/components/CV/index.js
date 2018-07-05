@@ -114,180 +114,192 @@ const CV = ({ data }) => (
         </div>
       </div>
       <div className="CV__section">
-        <div className="CV__section__wrapper">
-          WORK EXPERIENCE:
+        <div className="CV__section__header">
+          <div className="CV__section__header__wrapper">
+            WORK EXPERIENCE:
+          </div>
+        </div>
+        <div className="CV__section__content">
+          <div className="CV__jobs">
+            {data.jobs.map((job, jobIndex) =>
+              <div
+                key={jobIndex}
+                className="CV__jobs__job"
+              >
+                <div className="CV__jobs__job__dates">
+                  <div className="CV__jobs__job__dates__wrapper">
+                    <div className="CV__jobs__job__dates__wrapper__date">
+                      {job.dateFinished}
+                    </div>
+                    <div className="CV__jobs__job__dates__wrapper__date">
+                      {job.dateStarted}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="CV__jobs__details">
+                  <div className="CV__jobs__job__details__position">
+                    {job.position}
+                  </div>
+                  <div className="CV__jobs__job__details__location">
+                    {job.company}, {job.location}
+                  </div>
+                  <div className="CV__jobs__job__details__description">
+                    {job.description.map((description, descriptionIndex) =>
+                      <div
+                        key={descriptionIndex}
+                        className="CV__jobs__job__details__description__paragraph"
+                      >
+                        {description}
+                      </div>
+                    )}
+                  </div>
+                  <div className="CV__jobs__job__details__buzzwords">
+                    {job.buzzwords.map((buzzword, buzzwordIndex) =>
+                      <div
+                        key={buzzwordIndex}
+                        className="CV__jobs__job__details__buzzwords__buzzword"
+                      >
+                        {buzzword}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <div className="CV__jobs">
-        {data.jobs.map((job, jobIndex) =>
-          <div
-            key={jobIndex}
-            className="CV__jobs__job"
-          >
-            <div className="CV__jobs__job__dates">
-              <div className="CV__jobs__job__dates__wrapper">
-                <div className="CV__jobs__job__dates__wrapper__date">
-                  {job.dateFinished}
+      <div className="CV__section CV__section_small">
+        <div className="CV__section__header">
+          <div className="CV__section__header__wrapper">
+            EDUCATION:
+          </div>
+        </div>
+        <div className="CV__section__content">
+          <div className="CV__education">
+            {data.education.map((study, studyIndex) =>
+              <div
+                key={studyIndex}
+                className="CV__education__study"
+              >
+                <div className="CV__education__study__dates">
+                  <div className="CV__education__study__dates__wrapper">
+                    <div className="CV__education__study__dates__wrapper__date">
+                      {study.dateFinished}
+                    </div>
+                    <div className="CV__education__study__dates__wrapper__date">
+                      {study.dateStarted}
+                    </div>
+                  </div>
                 </div>
-                <div className="CV__jobs__job__dates__wrapper__date">
-                  {job.dateStarted}
+                <div className="CV__education__study__details">
+                  <div className="CV__education__study__details__university">
+                    {study.university}
+                  </div>
+                  <div className="CV__education__study__details__faculty">
+                    {study.faculty}
+                  </div>
+                  <div className="CV__education__study__details__field-of-study">
+                    {study.fieldOfStudy}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="CV__jobs__details">
-              <div className="CV__jobs__job__details__position">
-                {job.position}
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="CV__section CV__section_small">
+        <div className="CV__section__header">
+          <div className="CV__section__header__wrapper">
+            PERSONAL SKILLS:
+          </div>
+        </div>
+        <div className="CV__section__content">
+          <div className="CV__skills">
+            <div className="CV__skills__skill">
+              <div className="CV__skills__skill__icon">
+                <div className="CV__skills__skill__icon__wrapper">
+                  <i className="fas fa-globe fa-fw" />
+                </div>
               </div>
-              <div className="CV__jobs__job__details__location">
-                {job.company}, {job.location}
+              <div className="CV__skills__skill__label">
+                Languages:
               </div>
-              <div className="CV__jobs__job__details__description">
-                {job.description.map((description, descriptionIndex) =>
+              <div className="CV__skills__skill__list">
+                {data.skills.languages.map((language, languageIndex) =>
                   <div
-                    key={descriptionIndex}
-                    className="CV__jobs__job__details__description__paragraph"
+                    key={languageIndex}
+                    className="CV__skills__skill__list__item"
                   >
-                    {description}
+                    {language.name} - {language.level}
                   </div>
                 )}
               </div>
-              <div className="CV__jobs__job__details__buzzwords">
-                {job.buzzwords.map((buzzword, buzzwordIndex) =>
+            </div>
+
+            <div className="CV__skills__skill">
+              <div className="CV__skills__skill__icon">
+                <div className="CV__skills__skill__icon__wrapper">
+                  <i className="far fa-user-circle fa-fw" />
+                </div>
+              </div>
+              <div className="CV__skills__skill__label">
+                I am:
+              </div>
+              <div className="CV__skills__skill__list">
+                <div className="CV__skills__skill__list__item">
+                  {data.skills.iAm.join(', ')}
+                </div>
+              </div>
+            </div>
+
+            <div className="CV__skills__skill">
+              <div className="CV__skills__skill__icon">
+                <div className="CV__skills__skill__icon__wrapper">
+                  <i className="fas fa-heart fa-fw" />
+                </div>
+              </div>
+              <div className="CV__skills__skill__label">
+                I love:
+              </div>
+              <div className="CV__skills__skill__list">
+                {data.skills.iLove.map((love, loveIndex) =>
                   <div
-                    key={buzzwordIndex}
-                    className="CV__jobs__job__details__buzzwords__buzzword"
+                    key={loveIndex}
+                    className="CV__skills__skill__list__item"
                   >
-                    {buzzword}
+                    {love}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="CV__skills__skill">
+              <div className="CV__skills__skill__icon">
+                <div className="CV__skills__skill__icon__wrapper">
+                  <i className="fas fa-plus-circle fa-fw" />
+                </div>
+              </div>
+              <div className="CV__skills__skill__label">
+                Other:
+              </div>
+              <div className="CV__skills__skill__list">
+                {data.skills.other.map((skill, skillLove) =>
+                  <div
+                    key={skillLove}
+                    className="CV__skills__skill__list__item"
+                  >
+                    {skill}
                   </div>
                 )}
               </div>
             </div>
           </div>
-        )}
-      </div>
-      <div className="CV__section">
-        <div className="CV__section__wrapper">
-          EDUCATION:
-        </div>
-      </div>
-      <div className="CV__education">
-        {data.education.map((study, studyIndex) =>
-          <div
-            key={studyIndex}
-            className="CV__education__study"
-          >
-            <div className="CV__education__study__dates">
-              <div className="CV__education__study__dates__wrapper">
-                <div className="CV__education__study__dates__wrapper__date">
-                  {study.dateFinished}
-                </div>
-                <div className="CV__education__study__dates__wrapper__date">
-                  {study.dateStarted}
-                </div>
-              </div>
-            </div>
-            <div className="CV__education__study__details">
-              <div className="CV__education__study__details__university">
-                {study.university}
-              </div>
-              <div className="CV__education__study__details__faculty">
-                {study.faculty}
-              </div>
-              <div className="CV__education__study__details__field-of-study">
-                {study.fieldOfStudy}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-      <div className="CV__section">
-        <div className="CV__section__wrapper">
-          PERSONAL SKILLS:
-        </div>
-      </div>
-      <div className="CV__skills">
-        <div className="CV__skills__skill">
-          <div className="CV__skills__skill__icon">
-            <div className="CV__skills__skill__icon__wrapper">
-              <i className="fas fa-globe fa-fw" />
-            </div>
-          </div>
-          <div className="CV__skills__skill__label">
-            Languages:
-          </div>
-          <div className="CV__skills__skill__list">
-            {data.skills.languages.map((language, languageIndex) =>
-              <div
-                key={languageIndex}
-                className="CV__skills__skill__list__item"
-              >
-                {language.name} - {language.level}
-              </div>
-            )}
+          <div className="CV__qrcode">
+            <QRCode value={data.qrCodeValue} />
           </div>
         </div>
-
-        <div className="CV__skills__skill">
-          <div className="CV__skills__skill__icon">
-            <div className="CV__skills__skill__icon__wrapper">
-              <i className="far fa-user-circle fa-fw" />
-            </div>
-          </div>
-          <div className="CV__skills__skill__label">
-            I am:
-          </div>
-          <div className="CV__skills__skill__list">
-            <div className="CV__skills__skill__list__item">
-              {data.skills.iAm.join(', ')}
-            </div>
-          </div>
-        </div>
-
-        <div className="CV__skills__skill">
-          <div className="CV__skills__skill__icon">
-            <div className="CV__skills__skill__icon__wrapper">
-              <i className="fas fa-heart fa-fw" />
-            </div>
-          </div>
-          <div className="CV__skills__skill__label">
-            I love:
-          </div>
-          <div className="CV__skills__skill__list">
-            {data.skills.iLove.map((love, loveIndex) =>
-              <div
-                key={loveIndex}
-                className="CV__skills__skill__list__item"
-              >
-                {love}
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="CV__skills__skill">
-          <div className="CV__skills__skill__icon">
-            <div className="CV__skills__skill__icon__wrapper">
-              <i className="fas fa-plus-circle fa-fw" />
-            </div>
-          </div>
-          <div className="CV__skills__skill__label">
-            Other:
-          </div>
-          <div className="CV__skills__skill__list">
-            {data.skills.other.map((skill, skillLove) =>
-              <div
-                key={skillLove}
-                className="CV__skills__skill__list__item"
-              >
-                {skill}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="CV__qrcode">
-        <QRCode value={data.qrCodeValue} />
       </div>
     </div>
   </div>
