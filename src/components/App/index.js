@@ -27,7 +27,7 @@ class App extends Component {
       jobs: [
         {
           dateStarted: "Oct 2017",
-          dateFinished: "Present",
+          dateFinished: "Jul 2018",
           position: "Full Stack Developer",
           company: "Spark Solutions",
           location: "Warsaw, POLAND",
