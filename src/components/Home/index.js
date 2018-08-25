@@ -41,7 +41,7 @@ class Home extends Component {
           <a
             href="https://www.linkedin.com/in/michal-wrzosek-cv/"
             taget="_blank"
-            title="My LinkeIn"
+            title="My LinkedIn"
             className="Home__links__link"
           >
             <i className="fab fa-linkedin" />
@@ -87,20 +87,11 @@ class Home extends Component {
 
           <div className="Home__contact__detail">
             <div className="Home__contact__detail__icon">
-              <i className="fas fa-phone" />
-            </div>
-            <div className="Home__contact__detail__text">
-              +48 690-56-26-46
-            </div>
-          </div>
-
-          <div className="Home__contact__detail">
-            <div className="Home__contact__detail__icon">
               <i className="fas fa-map-marker-alt" />
             </div>
             <div className="Home__contact__detail__text">
-              ul. Etiudy Rewolucyjnej 48 lok. 2<br />
-              02-647 Warszawa, POLAND
+              ul. Martin-Luther-Str. 4A<br />
+              20459 Hamburg, GERMANY
             </div>
           </div>
         </div>
