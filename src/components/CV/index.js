@@ -58,16 +58,18 @@ const CV = ({ data }) => (
                 </div>
               </div>
 
-              <div className="CV__person__details__other__side__detail">
-                <span className="CV__person__details__other__side__detail__icon">
-                  <i className="fas fa-mobile-alt fa-fw" />
-                </span>
-                <div className="CV__person__details__other__side__detail__lines">
-                  <div className="CV__person__details__other__side__detail__lines__line">
-                    {data.person.phoneNumber}
+              {data.person.phoneNumber &&
+                <div className="CV__person__details__other__side__detail">
+                  <span className="CV__person__details__other__side__detail__icon">
+                    <i className="fas fa-mobile-alt fa-fw" />
+                  </span>
+                  <div className="CV__person__details__other__side__detail__lines">
+                    <div className="CV__person__details__other__side__detail__lines__line">
+                      {data.person.phoneNumber}
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
 
               <div className="CV__person__details__other__side__detail">
                 <span className="CV__person__details__other__side__detail__icon">

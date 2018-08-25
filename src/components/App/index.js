@@ -17,12 +17,12 @@ class App extends Component {
         fullName: "Michał Wrzosek",
         dateOfBirth: "29 Sep 1990",
         nationality: "Polish",
-        phoneNumber: "(+48) 690-56-26-46",
+        phoneNumber: null,
         email: "michal@wrzosek.pl",
         website: "michal.wrzosek.pl",
-        addressLine1: "ul. Bachmacka 6/26 m. 26",
-        addressLine2: "02-647 Warszawa, POLAND",
-        addressLine3: "(willing to relocate in EU)"
+        addressLine1: "Martin-Luther-Str. 4A",
+        addressLine2: "20459 Hamburg",
+        addressLine3: "GERMANY"
       },
       jobs: [
         {
