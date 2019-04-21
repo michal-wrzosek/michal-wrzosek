@@ -73,6 +73,15 @@ class Home extends Component {
           >
             <i className="fab fa-twitter-square" />
           </a>
+
+          <a
+            href="https://medium.com/@xfor"
+            taget="_blank"
+            title="My Medium"
+            className="Home__links__link"
+          >
+            <i className="fab fa-medium" />
+          </a>
         </div>
 
         <div className="Home__contact">
