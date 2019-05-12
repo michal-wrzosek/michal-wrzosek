@@ -87,7 +87,7 @@ class App extends Component {
         },
         {
           dateStarted: "Sep 2014",
-          dateFinished: "Present",
+          dateFinished: "Jul 2018",
           position: "Co Founder",
           company: "Mangaido",
           location: "Warsaw, POLAND",
@@ -120,7 +120,7 @@ class App extends Component {
           company: "StepStone",
           location: "Brussels, BELGIUM",
           description: [
-            "At the beggining of 2016 I moved to Brussels and started working in Stepstone - well known job board company, as a Front-end Developer. Later on I started working also as a Back-end guy. The most important experience from that time was working with team in Agile/SCRUM envirament. I was working on new version of search application that is used by recruiters all over the world. The biggest challange was creating one application that is used by clients with different preferences and having lots of complicated facets making this search engine very smart tool. The front-end was done mostly in Angular.js and back-end in ColdFusion."
+            "At the beginning of 2016 I moved to Brussels and started working in Stepstone - well known job board company, as a Front-end Developer. Later on I started working also as a Back-end guy. The most important experience from that time was working with team in Agile/SCRUM environment. I was working on new version of search application that is used by recruiters all over the world. The biggest challenge was creating one application that is used by clients with different preferences and having lots of complicated facets making this search engine very smart tool. The front-end was done mostly in Angular.js and back-end in ColdFusion."
           ],
           buzzwords: [
             "Angular",
