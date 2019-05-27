@@ -45,7 +45,7 @@ class App extends Component {
             "Saga",
             "NGINX",
             "Express",
-            "Amazon Web Services (AWS, S3, EC2)",
+            "Amazon Web Services (AWS - S3, EC2, ECS, CloudFormation, ElastiCache)",
             "Serverless",
             "Algolia",
             "mongoDB",
@@ -55,6 +55,7 @@ class App extends Component {
             "Microservices architecture",
             ">95% test coverage",
             "unit & e2e tests",
+            "Amazon Alexa Skills"
           ]
         },
         {
