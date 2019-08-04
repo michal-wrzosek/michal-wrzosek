@@ -32,7 +32,7 @@ class App extends Component {
           company: "Valassis Digital",
           location: "Hamburg, GERMANY",
           description: [
-            "Lots of challanges in developing new features within a very mature product and team. Beside pure development, I'm trying to introduce here modern standards and technologies, like for example, code review culture and modern frameworks like React.",
+            "Lots of challenges in developing new features within a very mature product and team. Beside pure development, I'm trying to introduce here modern standards and technologies, like for example, code review culture and modern frameworks like React.",
           ],
           buzzwords: [
             "Javascript",
