@@ -315,7 +315,7 @@ CV.propTypes = {
       fullName: PropTypes.string.isRequired,
       dateOfBirth: PropTypes.string.isRequired,
       nationality: PropTypes.string.isRequired,
-      phoneNumber: PropTypes.string.isRequired,
+      phoneNumber: PropTypes.string,
       email: PropTypes.string.isRequired,
       website: PropTypes.string.isRequired,
       addressLine1: PropTypes.string.isRequired,

@@ -20,14 +20,32 @@ class App extends Component {
         phoneNumber: null,
         email: "michal@wrzosek.pl",
         website: "michal.wrzosek.pl",
-        addressLine1: "Im Tale 8",
+        addressLine1: "Löwenstr. 71",
         addressLine2: "20251 Hamburg",
         addressLine3: "GERMANY"
       },
       jobs: [
         {
-          dateStarted: "Aug 2018",
+          dateStarted: "Jul 2019",
           dateFinished: "Present",
+          position: "Senior Software Engineer",
+          company: "Valassis Digital",
+          location: "Hamburg, GERMANY",
+          description: [
+            "Lots of challanges in developing new features within a very mature product and team. Beside pure development, I'm trying to introduce here modern standards and technologies, like for example, code review culture and modern frameworks like React.",
+          ],
+          buzzwords: [
+            "Javascript",
+            "Backbone",
+            "LESS",
+            "Bootstrap",
+            "Jenkins",
+            "JIRA",
+          ]
+        },
+        {
+          dateStarted: "Aug 2018",
+          dateFinished: "Jun 2019",
           position: "Senior Software Engineer",
           company: "moebel.de",
           location: "Hamburg, GERMANY",
