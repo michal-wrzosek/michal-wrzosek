@@ -19,7 +19,7 @@ class App extends Component {
         nationality: "Polish",
         phoneNumber: null,
         email: "michal@wrzosek.pl",
-        website: "michal.wrzosek.pl",
+        website: "https://michal.wrzosek.pl",
         addressLine1: "Löwenstr. 71",
         addressLine2: "20251 Hamburg",
         addressLine3: "GERMANY"
@@ -32,7 +32,7 @@ class App extends Component {
           company: "Valassis Digital",
           location: "Hamburg, GERMANY",
           description: [
-            "Lots of challenges in developing new features within a very mature product and team. Beside pure development, I'm trying to introduce here modern standards and technologies, like for example, code review culture and modern frameworks like React.",
+            "Valassis is one of the largest coupon distributors/processors in the world. Established 50 years ago it has approximately 7,000 employees in 28 states and 9 countries. Main goal of my team is to maintain and develop new features within solution taking care of coupons and discounts transactions in Europe. We deliver both B2B and B2B2C products where our customers are often the biggest companies in the world.",
           ],
           buzzwords: [
             "React.js",
@@ -238,6 +238,103 @@ class App extends Component {
             "Audacity"
           ]
         }
+      ],
+      sideProjects: [
+        {
+          title: "react-component-lib",
+          url: "https://medium.com/@xfor/developing-publishing-react-component-library-to-npm-styled-components-typescript-cc8274305f5a",
+          description: "Boilerplate repo for creating npm packages with React components written in TypeScript and using styled-components.",
+        },
+
+        {
+          title: "subscribe-context",
+          url: "https://github.com/michal-wrzosek/subscribe-context",
+          description: "React Hooks for Subscribable Subject in Context Pattern.",
+        },
+
+        {
+          title: "schemat",
+          url: "https://github.com/michal-wrzosek/schemat",
+          description: "Simple runtime schema validator for projects in Node.js/Typescript.",
+        },
+
+        {
+          title: "moorage",
+          url: "https://github.com/michal-wrzosek/moorage",
+          description: "moorage - Server side rendering masonry like react layout component.",
+        },
+
+        {
+          title: "express-boilerplate",
+          url: "https://medium.com/@xfor/express-with-typescript-setup-8d4863e4317e",
+          description: "Express boilerplate",
+        },
+
+        {
+          title: "create-react-app-boilerplate",
+          url: "https://medium.com/@xfor/setting-up-your-create-react-app-project-with-typescript-vscode-d83a3728b45e",
+          description: "Create React App Boilerplate",
+        },
+
+        {
+          title: "graphql-jwt-auth-boilerplate",
+          url: "https://github.com/michal-wrzosek/graphql-jwt-auth-boilerplate",
+          description: "GraphQL server + JWT authentication with refresh tokens",
+        },
+
+        {
+          title: "web-admin-api",
+          url: "https://github.com/michal-wrzosek/web-admin-api",
+          description: "Fullstack boilerplate.",
+        },
+
+        {
+          title: "worp",
+          url: "https://github.com/michal-wrzosek/worp",
+          description: "Fixtures generator package",
+        },
+
+        {
+          title: "challenge-app",
+          url: "https://github.com/michal-wrzosek/challenge-app",
+          description: "Demo react search app with authentication",
+        },
+
+        {
+          title: "challenge-api",
+          url: "https://github.com/michal-wrzosek/challenge-api",
+          description: "Demo express.js api with authentication",
+        },
+
+        {
+          title: "gtd-inbox",
+          url: "https://github.com/michal-wrzosek/gtd-inbox",
+          description: "React Native 'Getting Things Done' Inbox iOS & Android App",
+        },
+
+        {
+          title: "cyrylica-quiz",
+          url: "https://github.com/michal-wrzosek/cyrylica-quiz",
+          description: "This is a small Quiz game for Polish speakers learning Russian alphabet.",
+        },
+
+        {
+          title: "deep-names",
+          url: "https://github.com/michal-wrzosek/deep-names",
+          description: "Analysis of company names from Fortune 500 used to generate pseudo-random company names.",
+        },
+
+        {
+          title: "real-estate-price-prediction",
+          url: "https://github.com/michal-wrzosek/real-estate-price-prediction",
+          description: "Machine learning model for predicting real estate prices",
+        },
+
+        {
+          title: "annumi.com",
+          url: "https://annumi.com",
+          description: "e-commerce side project. React + Express.js + Stripe. This project is only partially open sourced",
+        },
       ],
       education: [
         {

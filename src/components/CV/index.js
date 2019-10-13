@@ -87,9 +87,13 @@ const CV = ({ data }) => (
                   <i className="fas fa-globe fa-fw" />
                 </span>
                 <div className="CV__person__details__other__side__detail__lines">
-                  <div className="CV__person__details__other__side__detail__lines__line">
+                  <a
+                    className="CV__person__details__other__side__detail__lines__line"
+                    href={data.person.website}
+                    target="_blank"
+                  >
                     {data.person.website}
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -168,6 +172,35 @@ const CV = ({ data }) => (
                   </div>
                 </div>
               </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="CV__section">
+        <div className="CV__section__header">
+          <div className="CV__section__header__wrapper">
+            SIDE PROJECTS:
+          </div>
+        </div>
+        <div className="CV__section__content">
+          <div className="CV__side-projects">
+            {data.sideProjects.map((sideProject, sideProjectIndex) =>
+              <a
+                key={sideProjectIndex}
+                href={sideProject.url}
+                target="_blank"
+                className="CV__side-projects__side-project"
+              >
+                <div className="CV__side-projects__side-project__title">
+                  {sideProject.title}
+                </div>
+                <div className="CV__side-projects__side-project__url">
+                  {sideProject.url}
+                </div>
+                <div className="CV__side-projects__side-project__description">
+                  {sideProject.description}
+                </div>
+              </a>
             )}
           </div>
         </div>
@@ -329,6 +362,11 @@ CV.propTypes = {
       location: PropTypes.string.isRequired,
       description: PropTypes.arrayOf(PropTypes.string).isRequired,
       buzzwords: PropTypes.arrayOf(PropTypes.string).isRequired
+    })).isRequired,
+    sideProjects: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
     })).isRequired,
     education: PropTypes.arrayOf(PropTypes.shape({
       dateStarted: PropTypes.string.isRequired,

@@ -94,7 +94,16 @@
             &__lines {
 
               &__line {
+                display: block;
 
+                &:link, &:visited, &:active {
+                  text-decoration: none;
+                  color: inherit;
+                }
+          
+                &:link:hover {
+                  text-decoration: underline;
+                }
               }
             }
           }
@@ -203,6 +212,50 @@
             margin: 0 5px 5px 0;
           }
         }
+      }
+    }
+  }
+
+  &__side-projects {
+
+    &__side-project {
+      display: block;
+      padding: 10px 25px;
+
+      &:link, &:visited, &:active {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:nth-child(odd) {
+        background-color: rgba(#000, 0);
+      }
+
+      &:nth-child(even) {
+        background-color: rgba(#000, 0.05);
+      }
+
+      @media print {
+        page-break-inside: avoid;
+      }
+
+      &__title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 24px;
+      }
+
+      &__url {
+        font-size: 12px;
+        opacity: 0.5;
+      }
+
+      &__description {
+        font-size: 14px;
       }
     }
   }
