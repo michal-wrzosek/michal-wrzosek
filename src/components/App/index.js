@@ -20,14 +20,34 @@ class App extends Component {
         phoneNumber: null,
         email: "michal@wrzosek.pl",
         website: "https://michal.wrzosek.pl",
-        addressLine1: "Löwenstr. 71",
-        addressLine2: "20251 Hamburg",
-        addressLine3: "GERMANY"
+        addressLine1: "Galvanistraat 707",
+        addressLine2: "3029 AD Rotterdam",
+        addressLine3: "NETHERLANDS"
       },
       jobs: [
         {
+          dateStarted: "March 2020",
+          dateFinished: "present",
+          position: "Senior Frontend Engineer",
+          company: "Shell",
+          location: "Rotterdam, NETHERLANDS",
+          description: [
+            "Working @ Shell's Agile Tech Hub",
+          ],
+          buzzwords: [
+            "React.js",
+            "GraphQL",
+            "Node.js",
+            "Typescript",
+            "styled components",
+            "K8s",
+            "Kubernetes",
+            "JIRA",
+          ]
+        },
+        {
           dateStarted: "Jul 2019",
-          dateFinished: "Present",
+          dateFinished: "February 2020",
           position: "Senior Software Engineer",
           company: "Valassis Digital",
           location: "Hamburg, GERMANY",

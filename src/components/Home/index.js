@@ -99,8 +99,8 @@ class Home extends Component {
               <i className="fas fa-map-marker-alt" />
             </div>
             <div className="Home__contact__detail__text">
-              Im Tale 8<br />
-              20251 Hamburg, GERMANY
+              Galvanistraat 707<br />
+              3029 AD Rotterdam, NETHERLANDS
             </div>
           </div>
         </div>
