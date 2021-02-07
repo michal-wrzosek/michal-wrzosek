@@ -100,7 +100,7 @@ class Home extends Component {
             </div>
             <div className="Home__contact__detail__text">
               Galvanistraat 707<br />
-              3029 AD Rotterdam, NETHERLANDS
+              3029 AD Rotterdam, THE NETHERLANDS
             </div>
           </div>
         </div>

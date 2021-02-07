@@ -22,17 +22,17 @@ class App extends Component {
         website: "https://michal.wrzosek.pl",
         addressLine1: "Galvanistraat 707",
         addressLine2: "3029 AD Rotterdam",
-        addressLine3: "NETHERLANDS"
+        addressLine3: "THE NETHERLANDS"
       },
       jobs: [
         {
           dateStarted: "March 2020",
           dateFinished: "present",
-          position: "Senior Frontend Engineer",
+          position: "Senior Software Engineer",
           company: "Shell",
           location: "Rotterdam, NETHERLANDS",
           description: [
-            "Working @ Shell's Agile Tech Hub",
+            "Working @ Shell's Agile Tech Hub as a contractor",
           ],
           buzzwords: [
             "React.js",
@@ -52,7 +52,7 @@ class App extends Component {
           company: "Valassis Digital",
           location: "Hamburg, GERMANY",
           description: [
-            "Valassis is one of the largest coupon distributors/processors in the world. Established 50 years ago it has approximately 7,000 employees in 28 states and 9 countries. Main goal of my team is to maintain and develop new features within solution taking care of coupons and discounts transactions in Europe. We deliver both B2B and B2B2C products where our customers are often the biggest companies in the world.",
+            "Valassis is one of the largest coupon distributors/processors in the world. Established 50 years ago it has approximately 7,000 employees in 28 states and 9 countries. Main goal of my team was to maintain and develop new features within solution taking care of coupons and discounts transactions in Europe. We delivered both B2B and B2B2C products where our customers were often the biggest companies in the world.",
           ],
           buzzwords: [
             "React.js",
@@ -261,6 +261,24 @@ class App extends Component {
       ],
       sideProjects: [
         {
+          title: "Vaccination Certificates",
+          url: "https://github.com/michal-wrzosek/vaccination-certificates",
+          description: "Decentralized Ethereum Application (DAPP) providing solution for COVID-19 Vaccination Certificates",
+        },
+
+        {
+          title: "pitupitu - virtual office app",
+          url: "https://pitupitu.chat/",
+          description: "Virtual venue video-conferencing application",
+        },
+
+        {
+          title: "p2p-chat",
+          url: "https://github.com/michal-wrzosek/p2p-chat",
+          description: "p2p chat on WebRTC with additional AES256 encryption and file sharing",
+        },
+
+        {
           title: "react-component-lib",
           url: "https://medium.com/@xfor/developing-publishing-react-component-library-to-npm-styled-components-typescript-cc8274305f5a",
           description: "Boilerplate repo for creating npm packages with React components written in TypeScript and using styled-components.",
@@ -381,6 +399,10 @@ class App extends Component {
           {
             name: "English",
             level: "fluent"
+          },
+          {
+            name: "French",
+            level: "communicative"
           },
           {
             name: "Japanese",
