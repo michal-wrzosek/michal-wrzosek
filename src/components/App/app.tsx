@@ -26,14 +26,30 @@ const cvData: CvData = {
   ],
   jobs: [
     {
-      buzzwords: ['React.js', 'GraphQL', 'Node.js', 'Typescript', 'styled components', 'K8s', 'Kubernetes', 'JIRA'],
+      buzzwords: [
+        'React.js',
+        'GraphQL',
+        'Node.js',
+        'Typescript',
+        'styled components',
+        'K8s',
+        'Kubernetes',
+        'CircleCI',
+        'GitHub Actions',
+        'JIRA',
+        'DevOps',
+        'Azure Cloud',
+        'HTML5',
+        'CSS3',
+      ],
       company: 'Shell',
       dateFinished: 'present',
       dateStarted: 'March 2020',
-      description: ["Working @ Shell's Agile Tech Hub as a contractor"],
+      description: [
+        "Working @ Shell's Agile Hub as a contractor. I'm working here on a high stake and crucial projects focused around crude evaluation and trading with a world scale impact. Keeping high quality and 100% test coverage. I'm responsible here for planning, developing and maintaining frontend applications. Also, I occasionally do workshops for other developers and I lead interviews for other frontend positions at Agile Hub",
+      ],
       location: 'Rotterdam, NETHERLANDS',
-      // eslint-disable-next-line sonarjs/no-duplicate-string
-      position: 'Senior Software Engineer',
+      position: 'Senior Frontend Developer',
     },
     {
       buzzwords: [
