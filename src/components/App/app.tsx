@@ -27,6 +27,30 @@ const cvData: CvData = {
   jobs: [
     {
       buzzwords: [
+        'Solidity',
+        'ZK Proofs',
+        'ZK Rollups',
+        'Circom',
+        'ZoKrates',
+        'Ethereum',
+        'Web3',
+        'Truffle',
+        'Hardhat',
+        'Geth',
+      ],
+      company: 'Klarluft',
+      dateFinished: 'present',
+      dateStarted: '2018',
+      description: [
+        '- bitbond.com - Reviewing Solidity contracts and doing Solidity workshops for German banks. Conducting Solidity interviews',
+        '- zklar.com - Secure Ethereum blockchain payment technology powered by zero-knowledge proofs and rollups',
+        '- tzklar.com - Building blocks for Tezos contracts.',
+      ],
+      location: 'Rotterdam, NETHERLANDS',
+      position: 'Founder',
+    },
+    {
+      buzzwords: [
         'React.js',
         'GraphQL',
         'Node.js',
@@ -44,12 +68,12 @@ const cvData: CvData = {
       ],
       company: 'Shell',
       dateFinished: 'present',
-      dateStarted: 'March 2020',
+      dateStarted: '2020',
       description: [
-        "Working @ Shell's Agile Hub as a contractor. I'm working here on a high stake and crucial projects focused around crude evaluation and trading with a world scale impact. Keeping high quality and 100% test coverage. I'm responsible here for planning, developing and maintaining frontend applications. Also, I occasionally do workshops for other developers and I lead interviews for other frontend positions at Agile Hub",
+        "Working @ Shell's Agile Hub as a contractor. I'm working here on a high stake and crucial projects focused around crude evaluation and trading with a world scale impact. Keeping high quality and 100% test coverage. I'm responsible here for planning, developing and maintaining frontend applications. Also, I occasionally do workshops for other developers and I lead interviews for other engineering positions at Agile Hub",
       ],
       location: 'Rotterdam, NETHERLANDS',
-      position: 'Senior Frontend Developer',
+      position: 'Senior Software Engineer',
     },
     {
       buzzwords: [
@@ -71,8 +95,8 @@ const cvData: CvData = {
         'JIRA',
       ],
       company: 'Valassis Digital',
-      dateFinished: 'February 2020',
-      dateStarted: 'Jul 2019',
+      dateFinished: '2020',
+      dateStarted: '2019',
       description: [
         'Valassis is one of the largest coupon distributors/processors in the world. Established 50 years ago it has approximately 7,000 employees in 28 states and 9 countries. Main goal of my team was to maintain and develop new features within solution taking care of coupons and discounts transactions in Europe. We delivered both B2B and B2B2C products where our customers were often the biggest companies in the world.',
       ],
@@ -106,8 +130,8 @@ const cvData: CvData = {
         'Amazon Alexa Skills',
       ],
       company: 'moebel.de',
-      dateFinished: 'Jun 2019',
-      dateStarted: 'Aug 2018',
+      dateFinished: '2019',
+      dateStarted: '2018',
       description: [
         'Working on developing and maintaining the biggest German furniture search engine in Agile team (4-8 devs + PM + SCRUM Master). Cooperating with 3 other independent teams on delivering new features and maintaining our infrastructure based on microservices.',
       ],
@@ -133,8 +157,8 @@ const cvData: CvData = {
         'Pivotal Tracker',
       ],
       company: 'Spark Solutions',
-      dateFinished: 'Jul 2018',
-      dateStarted: 'Oct 2017',
+      dateFinished: '2018',
+      dateStarted: '2017',
       description: [
         'Working in SCRUM team on delivering new features for US client (Spree based shop with eye-wear products)',
         'Developed fully functional MVP for UK client (GDPR compliance SaaS application)',
@@ -163,8 +187,8 @@ const cvData: CvData = {
         'Taiga.io',
       ],
       company: 'Mangaido',
-      dateFinished: 'Jul 2018',
-      dateStarted: 'Sep 2014',
+      dateFinished: '2018',
+      dateStarted: '2014',
       description: [
         "From 2014 I'm involved in creating my dream project which is a web platform that connect Asian comic creators with Western readers. Together with our Japanese friends we are carving our idea. Mangaido is a comic series translation platform.",
       ],
@@ -186,8 +210,8 @@ const cvData: CvData = {
         'JIRA',
       ],
       company: 'StepStone',
-      dateFinished: 'Jul 2016',
-      dateStarted: 'Mar 2016',
+      dateFinished: '',
+      dateStarted: '2016',
       description: [
         'At the beginning of 2016 I moved to Brussels and started working in Stepstone - well known job board company, as a Front-end Developer. Later on I started working also as a Back-end guy. The most important experience from that time was working with team in Agile/SCRUM environment. I was working on new version of search application that is used by recruiters all over the world. The biggest challenge was creating one application that is used by clients with different preferences and having lots of complicated facets making this search engine very smart tool. The front-end was done mostly in Angular.js and back-end in ColdFusion.',
       ],
@@ -208,8 +232,8 @@ const cvData: CvData = {
         'Illustrator',
       ],
       company: 'fullDive',
-      dateFinished: 'Feb 2016',
-      dateStarted: 'Jan 2014',
+      dateFinished: '2016',
+      dateStarted: '2014',
       description: [
         'fullDive.jp was a creative agency where me and my friends where working on different, mostly web oriented, projects. I used my skills mostly as a web developer, designer and a Google Trusted Photographer. Often we had to cooperate with other freelance web developers and my role was to plan, split the work and take care of communication layer as what I consider is a core of successful IT projects. During this time we created lots of websites, graphics and Street View Tours for our clients.',
       ],
@@ -219,8 +243,8 @@ const cvData: CvData = {
     {
       buzzwords: ['PHP', 'MySQL', 'Mailing Service', 'Real Estate offers scraper app', 'jQuery', 'WordPress'],
       company: 'Wrzosek Nieruchomości',
-      dateFinished: 'Feb 2016',
-      dateStarted: 'Dec 2013',
+      dateFinished: '2016',
+      dateStarted: '2013',
       description: [
         'I was working in Wrzosek.pl to create and maintain IT infrastructure. Beside taking care of the website, I was responsible for creating and maintaining application that was scraping and categorizing real estate offers from different other websites and sending new offers to agents based on their personal preferences. Thanks to this application company was always up to date with everything that was happening on the market.',
       ],
@@ -230,8 +254,8 @@ const cvData: CvData = {
     {
       buzzwords: ['PHP', 'MySQL', 'Facebook App Development', 'jQuery', 'Google Analytics'],
       company: 'mdh sp. z o.o.',
-      dateFinished: 'Jan 2015',
-      dateStarted: 'Jun 2013',
+      dateFinished: '2015',
+      dateStarted: '2013',
       description: [
         'I was responsible for keeping Memo Facebook fanpage up to date. During my work in MDH we grew fan base from ~6 to ~20 thousand people. I was also responsible for creating Facebook contest app that let us later on grow fan base easily.',
       ],
@@ -241,8 +265,8 @@ const cvData: CvData = {
     {
       buzzwords: ['Dalet', 'Audacity'],
       company: 'Polskie Radio S.A.',
-      dateFinished: 'Aug 2013',
-      dateStarted: 'Jun 2013',
+      dateFinished: '',
+      dateStarted: '2013',
       description: ['I worked there as a journalist and sound technician.'],
       location: 'Warsaw, POLAND',
       position: 'Trainee',
@@ -262,6 +286,12 @@ const cvData: CvData = {
   },
   qrCodeValue: 'http://michal.wrzosek.pl',
   sideProjects: [
+    {
+      description: 'ZKlar - ZK-Rollups for private transactions on Ethereum using Circom circuits (work in progress)',
+      title: 'ZKlar - zero-knowledge technology',
+      url: 'https://zklar.com',
+    },
+
     {
       description: 'Decentralized Ethereum Application (DAPP) providing solution for COVID-19 Vaccination Certificates',
       title: 'Vaccination Certificates',
@@ -284,8 +314,7 @@ const cvData: CvData = {
       description:
         'Boilerplate repo for creating npm packages with React components written in TypeScript and using styled-components.',
       title: 'react-component-lib',
-      url:
-        'https://medium.com/@xfor/developing-publishing-react-component-library-to-npm-styled-components-typescript-cc8274305f5a',
+      url: 'https://medium.com/@xfor/developing-publishing-react-component-library-to-npm-styled-components-typescript-cc8274305f5a',
     },
 
     {
