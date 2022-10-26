@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -25,6 +26,15 @@ const cvData: CvData = {
     },
   ],
   jobs: [
+    {
+      buzzwords: ['React.js', 'Typescript', 'styled components', 'GitLab pipelines', 'WebRTC', 'React Native'],
+      company: 'Quin',
+      dateFinished: 'present',
+      dateStarted: '2022',
+      description: ['Contract assignment @ Quin. Developing solutions for medical care in the Netherlands.'],
+      location: 'Amsterdam, NETHERLANDS',
+      position: 'Senior Frontend Developer',
+    },
     {
       buzzwords: [
         'Solidity',
@@ -57,21 +67,14 @@ const cvData: CvData = {
         'Typescript',
         'styled components',
         'K8s',
-        'Kubernetes',
         'CircleCI',
         'GitHub Actions',
-        'JIRA',
-        'DevOps',
         'Azure Cloud',
-        'HTML5',
-        'CSS3',
       ],
       company: 'Shell',
       dateFinished: 'present',
       dateStarted: '2020',
-      description: [
-        "Working @ Shell's Agile Hub as a contractor. I'm working here on a high stake and crucial projects focused around crude evaluation and trading with a world scale impact. Keeping high quality and 100% test coverage. I'm responsible here for planning, developing and maintaining frontend applications. Also, I occasionally do workshops for other developers and I lead interviews for other engineering positions at Agile Hub",
-      ],
+      description: ['Contract assignment @ Shell'],
       location: 'Rotterdam, NETHERLANDS',
       position: 'Senior Software Engineer',
     },
@@ -86,13 +89,11 @@ const cvData: CvData = {
         'Express.js',
         'Node.js',
         'Typescript',
-        'Ant Design',
         'Storybook',
         'Backbone',
         'LESS',
         'Bootstrap',
         'Jenkins',
-        'JIRA',
       ],
       company: 'Valassis Digital',
       dateFinished: '2020',
@@ -163,7 +164,6 @@ const cvData: CvData = {
         'Working in SCRUM team on delivering new features for US client (Spree based shop with eye-wear products)',
         'Developed fully functional MVP for UK client (GDPR compliance SaaS application)',
       ],
-      // eslint-disable-next-line sonarjs/no-duplicate-string
       location: 'Warsaw, POLAND',
       position: 'Full Stack Developer',
     },
