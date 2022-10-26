@@ -72,7 +72,7 @@ const cvData: CvData = {
         'Azure Cloud',
       ],
       company: 'Shell',
-      dateFinished: 'present',
+      dateFinished: '2022',
       dateStarted: '2020',
       description: ['Contract assignment @ Shell'],
       location: 'Rotterdam, NETHERLANDS',
@@ -412,7 +412,7 @@ const cvData: CvData = {
     iLove: ['Programming (back/front-end)', 'Designing (layouts, logos, flyers, etc.)', 'Studio photography'],
     languages: [
       {
-        level: 'mother language',
+        level: 'native',
         name: 'Polish',
       },
       {
@@ -425,7 +425,7 @@ const cvData: CvData = {
       },
       {
         level: 'learning basics',
-        name: 'Japanese',
+        name: 'Dutch',
       },
     ],
     other: ['Driving license cat. B', 'Google Trusted Photographer', 'Sound technician'],
