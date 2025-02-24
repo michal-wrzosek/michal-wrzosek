@@ -27,9 +27,28 @@ const cvData: CvData = {
   ],
   jobs: [
     {
+      buzzwords: [
+        'React.js',
+        'GraphQL',
+        'Node.js',
+        'Typescript',
+        'styled components',
+        'K8s',
+        'CircleCI',
+        'GitHub Actions',
+        'Azure Cloud',
+      ],
+      company: 'Shell',
+      dateFinished: 'present',
+      dateStarted: '2020',
+      description: ['Contract assignment @ Shell'],
+      location: 'Rotterdam, NETHERLANDS',
+      position: 'Senior Software Engineer',
+    },
+    {
       buzzwords: ['React.js', 'Typescript', 'styled components', 'GitLab pipelines', 'WebRTC', 'React Native'],
       company: 'Quin',
-      dateFinished: 'present',
+      dateFinished: '2023',
       dateStarted: '2022',
       description: ['Contract assignment @ Quin. Developing solutions for medical care in the Netherlands.'],
       location: 'Amsterdam, NETHERLANDS',
@@ -58,25 +77,6 @@ const cvData: CvData = {
       ],
       location: 'Rotterdam, NETHERLANDS',
       position: 'Founder',
-    },
-    {
-      buzzwords: [
-        'React.js',
-        'GraphQL',
-        'Node.js',
-        'Typescript',
-        'styled components',
-        'K8s',
-        'CircleCI',
-        'GitHub Actions',
-        'Azure Cloud',
-      ],
-      company: 'Shell',
-      dateFinished: '2022',
-      dateStarted: '2020',
-      description: ['Contract assignment @ Shell'],
-      location: 'Rotterdam, NETHERLANDS',
-      position: 'Senior Software Engineer',
     },
     {
       buzzwords: [
@@ -283,9 +283,35 @@ const cvData: CvData = {
     nationality: 'Polish',
     phoneNumber: null,
     website: 'https://michal.wrzosek.pl',
+    
   },
   qrCodeValue: 'http://michal.wrzosek.pl',
   sideProjects: [
+    {
+      description: "Next.js progressive partial data streaming library",
+      title: "next-data-streaming",
+      url: "https://github.com/michal-wrzosek/next-data-streaming"
+    },
+    {
+      description: "Styled-Components that are compatible with Next.js server components (RSC)",
+      title: "next-styled-components",
+      url: "https://github.com/michal-wrzosek/next-styled-components",
+    },
+    {
+      description: "Simple broadcasting tower service - you can broadcast messages and query them",
+      title: "Broadcasting Tower",
+      url: "https://github.com/michal-wrzosek/broadcasting-tower",
+    },
+    {
+      description: "ImapEmails is wrapping \"imap\" and \"mailparser\" library and exposes simple interface to fetch your latest emails from Gmail or any other inbox supporting IMAP",
+      title: "imap-emails",
+      url: "https://github.com/michal-wrzosek/imap-emails",
+    },
+    {
+      description: "Simple way to stay up to date with latest UFO news",
+      title: "r/UFOs refresher",
+      url: "https://github.com/michal-wrzosek/ufos-refresher"
+    },
     {
       description: 'ZKlar - ZK-Rollups for private transactions on Ethereum using Circom circuits (work in progress)',
       title: 'ZKlar - zero-knowledge technology',

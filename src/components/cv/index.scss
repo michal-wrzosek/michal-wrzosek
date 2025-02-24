@@ -5,6 +5,7 @@
 
   @media print {
     padding: 0;
+    background-color: unset;
   }
 
   &__buttons {
@@ -23,15 +24,15 @@
       border-right: 10px;
       padding: 10px;
       border-radius: 4px;
-      background-color: #1C1C1C;
-      color: #FFF;
+      background-color: #1c1c1c;
+      color: #fff;
     }
   }
 
   &__paper {
     max-width: 720px;
     margin: 0 auto;
-    background-color: #FFF;
+    background-color: #fff;
     box-shadow: 0px 4px 10px -3px rgba(#000, 0.75);
 
     @media print {
@@ -92,15 +93,16 @@
             }
 
             &__lines {
-
               &__line {
                 display: block;
 
-                &:link, &:visited, &:active {
+                &:link,
+                &:visited,
+                &:active {
                   text-decoration: none;
                   color: inherit;
                 }
-          
+
                 &:link:hover {
                   text-decoration: underline;
                 }
@@ -120,8 +122,8 @@
     }
 
     &__header {
-      background-color: #1C1C1C;
-      color: #FFF;
+      background-color: #1c1c1c;
+      color: #fff;
       padding: 0 20px;
       overflow: hidden;
 
@@ -131,7 +133,6 @@
     }
 
     &__content {
-
     }
   }
 
@@ -207,7 +208,7 @@
           &__buzzword {
             padding: 2px 5px;
             background-color: rgba(#000, 0.2);
-            color: #1C1C1C;
+            color: #1c1c1c;
             font-size: 12px;
             margin: 0 5px 5px 0;
           }
@@ -217,12 +218,13 @@
   }
 
   &__side-projects {
-
     &__side-project {
       display: block;
       padding: 10px 25px;
 
-      &:link, &:visited, &:active {
+      &:link,
+      &:visited,
+      &:active {
         text-decoration: none;
         color: inherit;
       }
