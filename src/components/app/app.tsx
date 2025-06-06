@@ -6,7 +6,7 @@ import { CV } from '../cv';
 import type { CvData } from '../cv';
 import { Home } from '../home';
 
-import avatar from './avatar.jpg';
+import avatar from './avatar.png';
 
 const cvData: CvData = {
   education: [
@@ -283,34 +283,34 @@ const cvData: CvData = {
     nationality: 'Polish',
     phoneNumber: null,
     website: 'https://michal.wrzosek.pl',
-    
   },
   qrCodeValue: 'http://michal.wrzosek.pl',
   sideProjects: [
     {
-      description: "Next.js progressive partial data streaming library",
-      title: "next-data-streaming",
-      url: "https://github.com/michal-wrzosek/next-data-streaming"
+      description: 'Next.js progressive partial data streaming library',
+      title: 'next-data-streaming',
+      url: 'https://github.com/michal-wrzosek/next-data-streaming',
     },
     {
-      description: "Styled-Components that are compatible with Next.js server components (RSC)",
-      title: "next-styled-components",
-      url: "https://github.com/michal-wrzosek/next-styled-components",
+      description: 'Styled-Components that are compatible with Next.js server components (RSC)',
+      title: 'next-styled-components',
+      url: 'https://github.com/michal-wrzosek/next-styled-components',
     },
     {
-      description: "Simple broadcasting tower service - you can broadcast messages and query them",
-      title: "Broadcasting Tower",
-      url: "https://github.com/michal-wrzosek/broadcasting-tower",
+      description: 'Simple broadcasting tower service - you can broadcast messages and query them',
+      title: 'Broadcasting Tower',
+      url: 'https://github.com/michal-wrzosek/broadcasting-tower',
     },
     {
-      description: "ImapEmails is wrapping \"imap\" and \"mailparser\" library and exposes simple interface to fetch your latest emails from Gmail or any other inbox supporting IMAP",
-      title: "imap-emails",
-      url: "https://github.com/michal-wrzosek/imap-emails",
+      description:
+        'ImapEmails is wrapping "imap" and "mailparser" library and exposes simple interface to fetch your latest emails from Gmail or any other inbox supporting IMAP',
+      title: 'imap-emails',
+      url: 'https://github.com/michal-wrzosek/imap-emails',
     },
     {
-      description: "Simple way to stay up to date with latest UFO news",
-      title: "r/UFOs refresher",
-      url: "https://github.com/michal-wrzosek/ufos-refresher"
+      description: 'Simple way to stay up to date with latest UFO news',
+      title: 'r/UFOs refresher',
+      url: 'https://github.com/michal-wrzosek/ufos-refresher',
     },
     {
       description: 'ZKlar - ZK-Rollups for private transactions on Ethereum using Circom circuits (work in progress)',
