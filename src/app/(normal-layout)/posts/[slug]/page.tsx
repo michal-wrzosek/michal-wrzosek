@@ -1,8 +1,12 @@
-import { getPost } from "@/lib/posts";
+import { getPost, getPostsDetails } from "@/lib/posts";
 import { Metadata } from "next";
 
+interface Params {
+  slug: string;
+}
+
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<Params>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -42,3 +46,13 @@ export default async function Page({ params }: Props) {
     </>
   );
 }
+
+export async function generateStaticParams(): Promise<Params[]> {
+  const posts = await getPostsDetails();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export const dynamicParams = false;
