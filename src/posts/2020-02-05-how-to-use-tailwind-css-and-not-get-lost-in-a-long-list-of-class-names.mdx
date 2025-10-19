@@ -1,0 +1,168 @@
+---
+date: 2020-02-05
+title: How to use tailwind css and not get lost in a long list of class names
+description: Tips and techniques for keeping Tailwind CSS class names organized and readable in React projects, including practical examples and alternative styling approaches.
+coverPhoto: /tailwind-1837x1183.webp
+coverPhotoAlt: Me drinking Bedouin tea at Wadi Rum desert sunset
+---
+
+I was recently playing with Tailwind CSS framework with React. One of the things that bothered me were these long className="..." declarations. I personally don't like to have too much style related stuff in my JSX. I think it makes things much less readable and that's why I'm a fan of Styled Components' way of declaring styles. But I figured out I could try to use Tailwind and just declare these class names in a more readable manner.
+
+Here is an example of how you could implement `<Card />` in the most straightforward way:
+
+```jsx
+import React from "react";
+import cntl from "cntl";
+
+const Card = () => (
+  <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <img
+      className="w-full"
+      src="/img/card-top.jpg"
+      alt="Sunset in the mountains"
+    />
+    <div className="px-6 py-4">
+      <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+      <p className="text-gray-700 text-base">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
+        quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
+        nihil.
+      </p>
+    </div>
+    <div className="px-6 py-4">
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+        #photography
+      </span>
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+        #travel
+      </span>
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+        #winter
+      </span>
+    </div>
+  </div>
+);
+```
+
+And here how it can be done with simple utility tool:
+
+```jsx
+import React from "react";
+import cntl from "cntl";
+
+const wrapperCN = cntl`
+  max-w-sm
+  rounded
+  overflow-hidden
+  shadow-lg
+`;
+
+const imageCN = cntl`
+  w-full
+`;
+
+const sectionCN = cntl`
+  px-6
+  py-4
+`;
+
+const titleCN = cntl`
+  font-bold
+  text-xl
+  mb-2
+`;
+
+const descriptionCN = cntl`
+  text-gray-700
+  text-base
+`;
+
+const tagCN = cntl`
+  inline-block
+  bg-gray-200
+  rounded-full
+  px-3
+  py-1
+  text-sm
+  font-semibold
+  text-gray-700
+  mr-2
+`;
+
+const Card = () => (
+  <div className={wrapperCN}>
+    <img
+      className={imageCN}
+      src="/img/card-top.jpg"
+      alt="Sunset in the mountains"
+    />
+    <div className={sectionCN}>
+      <div className={titleCN}>The Coldest Sunset</div>
+      <p className={descriptionCN}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
+        quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
+        nihil.
+      </p>
+    </div>
+    <div className={sectionCN}>
+      <span className={tagCN}>#photography</span>
+      <span className={tagCN}>#travel</span>
+      <span className={tagCN}>#winter</span>
+    </div>
+  </div>
+);
+```
+
+Now it's obviously up to you to decide which version you prefer. Nevertheless, this is definitely another way you can structure your styles.
+
+Another benefit of this approach is composability and conditional styles:
+
+```jsx
+import React from "react";
+import cntl from "cntl";
+
+const buttonCN = ({ isRed }: { isRed: boolean }) => cntl`
+  hover:bg-blue-700
+  text-white
+  font-bold
+  py-2
+  px-4
+  rounded
+  focus:outline-none
+  focus:shadow-outline
+  ${
+    isRed
+      ? cntl`
+        bg-red-500
+      `
+      : cntl`
+        bg-blue-500
+      `
+  }
+`;
+
+const Button = ({ isRed }: { isRed: boolean }) => (
+  <div className={buttonCN({ isRed })}>Click me</div>
+);
+```
+
+If this `cntl` template literals thingy looks like alien technology to you, here is how the implementation of this utility looks like:
+
+```typescript
+function cntl(template: TemplateStringsArray, ...templateElements: any[]) {
+  return template
+    .reduce((sum, n, index) => {
+      const templateElement = templateElements[index];
+      if (typeof templateElement === "string") {
+        return `${sum}${n}${templateElement}`;
+      }
+      return `${sum}${n}`;
+    }, "")
+    .trim()
+    .replace(/\s{2,}/g, " ");
+}
+```
+
+Here's some more info about “cntl”:
+
+[https://github.com/michal-wrzosek/cntl](https://github.com/michal-wrzosek/cntl)

@@ -1,0 +1,125 @@
+---
+date: 2021-11-16
+title: Zero-Knowledge Proof of new Merkle Tree root digest
+description: An exploration of how to construct a zero-knowledge proof for updating a Merkle Tree root digest, including practical considerations, proof strategies, and an example Zokrates circuit for verifying new root digests after leaf updates.
+coverPhoto: /me-in-front-of-computer-1616x1077.webp
+coverPhotoAlt: Hello, hello! Have a nice day and happy coding!
+---
+
+It is sometimes necessary to be able to prove what will be the new Merkle Tree root digest after changing some leaf at a specific position in your tree.
+
+After some thinking, I come up with the following setup.
+
+Let's say we have a typical Merkle Tree, but each leaf is firstly hashed with its index position(\*). This will allow us to prove at which position we're making some changes.
+
+Let's say you want to change a leaf value at index position P in a tree of root digest R.
+
+You would firstly prove that this old leaf is a part of a tree by making a typical proof of membership (using a list of all the other sibling digests needed to compute the root). That way verifier knows you want to change the leaf at index P and this leaf is indeed part of a tree because your prove successfully computes a root digest R.
+
+The next step is to show that by using the same index P and the same proof of membership siblings but a new leaf value you'll compute a new root - R'.
+
+That's it. You just proved that after your change the new root is R'. So the trick is to present proof of membership before and after the change using the same proof steps. Also, it is often important to prove the index position of your change so here's this idea to hash each leaf value with its index position.
+
+I'm curious what are other ideas on how to construct a zk proof of new root digest. Later on, I will try to put here some example circuits.
+
+_(\*) — This has its disadvantages as you can not use sparse trees. Each leaf in your tree will have a different digest._
+
+Edit 17-11-2021:
+Actually, it seems that you don't have to hash all your leaf values with their position. The merkle proof steps are interconnected with the position of your leaf. So for example leaf nr 7 in a tree of 8 leafs is “111” in binary which indicates that at every step you'll use the left sibling node for hashing. Position “000” on contrary will be the first element in the tree and will always use the right sibling for proof. So the proof steps are sufficient proof of the exact leaf position in the tree. No need for extra index hashing like I suggested earlier.
+
+Here's an example Zokrates circuit. Binary Sparse Merkle Tree Update Proof (Proof of new digest) (32 levels -> max ~4mld leafs) (Zokrates Zero-Knowledge Proof):
+
+```zokrates
+import "hashes/poseidon/poseidon" as poseidon
+
+const u32[32] powers_of_two = [
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  64,
+  128,
+  256,
+  512,
+  1024,
+  2048,
+  4096,
+  8192,
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576,
+  2097152,
+  4194304,
+  8388608,
+  16777216,
+  33554432,
+  67108864,
+  134217728,
+  268435456,
+  536870912,
+  1073741824,
+  2147483648
+]
+
+def merkleTreeProof( \
+  field root_digest, \
+  field leaf_digest, \
+  u32 leaf_index, \
+  field[32] siblings \
+) -> bool:
+  field current_digest = leaf_digest
+
+  for u32 i in 0..32 do
+    field sibling = siblings[i]
+    bool sibling_on_the_left = leaf_index & powers_of_two[i] == powers_of_two[i]
+
+    field left = if sibling_on_the_left \
+      then sibling \
+      else current_digest \
+    fi
+
+    field right = if sibling_on_the_left \
+      then current_digest \
+      else sibling \
+    fi
+
+    current_digest = if sibling == 0 \
+      then current_digest \
+      else poseidon([left, right]) \
+    fi
+  endfor
+
+  assert(current_digest == root_digest)
+
+  return true
+
+def merkleTreeUpdateProof( \
+  field old_root_digest, \
+  field old_leaf_digest, \
+  field new_root_digest, \
+  field new_leaf_digest, \
+  u32 leaf_index, \
+  field[32] siblings \
+) -> bool:
+  assert(merkleTreeProof( \
+    old_root_digest, \
+    old_leaf_digest, \
+    leaf_index, \
+    siblings \
+  ))
+
+  assert(merkleTreeProof( \
+    new_root_digest, \
+    new_leaf_digest, \
+    leaf_index, \
+    siblings \
+  ))
+
+  return true
+```

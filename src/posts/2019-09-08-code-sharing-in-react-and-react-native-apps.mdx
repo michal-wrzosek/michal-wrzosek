@@ -1,0 +1,70 @@
+---
+date: 2019-09-08
+title: Code sharing in React & React Native apps
+description: Practical strategies for sharing code between React web and React Native mobile apps, including monorepo structure, syncing shared code, and overcoming common bundling challenges.
+---
+
+(As of: September 8, 2019)
+
+I recently was investigating how I can approach building simultaneously web and mobile apps in a most optimal way. At first I started a Lerna monorepo approach where I could have my _shared_ package with all the code I want to share with _web_ and _mobile_. But I quickly noticed that there's a ton of issues bundling it properly and wiring it, especially with Expo/React Native.
+
+### My Solution
+
+First of all, I think Lerna monorepo is a good way to keep web & mobile apps together. What I did a bit differently is that I would keep a _shared_ package along _web_ and _mobile_ and just automatically sync (copy/paste) these files upon build process instead of compiling a real package of shared code.
+
+Folder structure suggestion:
+
+- /packages
+  - /shared
+    - /src -\> all the contents are copied to other repos
+  - /web
+    - /src
+      - /shared \<- pasted here
+  - /mobile
+    - /src
+      - /shared \<- pasted here
+
+In order to copy paste your code you can for example use something like [`sync-glob`](https://www.npmjs.com/package/sync-glob). Example:
+
+```json
+// packages/shared/package.json:
+{
+  // ...
+  "devDependencies": {
+    // ...
+    "concurrently": "^4.1.2",
+    "sync-glob": "^1.4.0"
+  },
+  "scripts": {
+    "build:web": "sync-glob 'src/*' 'src/**/*' '../web/src/shared/' --delete",
+    "build:mobile": "sync-glob 'src/*' 'src/**/*' '../mobile/src/shared/' --delete",
+    "build": "concurrently npm:build:web npm:build:mobile"
+  },
+  "files": ["dist"]
+}
+```
+
+Then make sure you add shared folder in web and mobile projects to .gitignore so that you'll not keep duplicated code.
+
+Then, you can just import shared files like they would be in your project always:
+
+```tsx
+// packages/web/src/App.tsx
+import React from "react";
+import { SomeProvider } from "./shared/context/SomeContext.tsx";
+export const App = () => <SomeProvider>Example</SomeProvider>;
+```
+
+### What to share?
+
+From what I see visual components for web and mobile are 2 different worlds. I think you should not waste your time building reusable visual components that you could use both for mobile and web.
+
+What you could reuse is everything else, so all the containers, context files, providers, custom hooks, types, translations, and graphql queries/fetch calls.
+
+### Conclusion
+
+I'm still experimenting with this setup. Let me know what do you think and if you found a better working solution.
+
+### tl;dr
+
+Just keep your shared source code in one place and copy paste it to other apps upon build. Simple, stupid, yet it works and saves you a lot of time and nerves.

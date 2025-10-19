@@ -1,0 +1,49 @@
+---
+date: 2025-03-01
+title: Adding Tailwind v4 to Docusaurus v3
+description: Guide to setting up Tailwind v4 in a Docusaurus v3 project, including installation of necessary packages, creating a custom plugin and configuring Docusaurus to use it, and integrating Tailwind with your CSS setup.
+coverPhoto: /falafel-in-hamburg-1000x420.webp
+coverPhotoAlt: Me ordering my favorite falafel in Hamburg
+---
+
+This is a very basic Tailwind v4 setup for Docusaurus v3.
+
+Install Tailwind and Postcss:
+
+```bash
+npm i --save-dev tailwindcss postcss @tailwindcss/postcss
+```
+
+Create docosaurus plugin in `src/plugins/tailwind-config.js`:
+
+```javascript
+module.exports = function tailwindPlugin(context, options) {
+  return {
+    name: "tailwind-plugin",
+    configurePostCss(postcssOptions) {
+      postcssOptions.plugins = [require("@tailwindcss/postcss")];
+      return postcssOptions;
+    },
+  };
+};
+```
+
+Add this plugin to docosaurus config object in `docusaurus.config.ts`:
+
+```typescript
+const config: Config = {
+  //...
+  plugins: ["./src/plugins/tailwind-config.js"],
+  //...
+};
+```
+
+Add tailwind setup somewhere in `src/css/custom.css` file:
+
+```css
+@import "tailwindcss";
+
+@custom-variant dark (&:is([data-theme="dark"] *));
+```
+
+And voila! From now on, Tailwind classes should be picked up by Docosaurus and the dark theme will also sync up correctly.

@@ -1,0 +1,55 @@
+---
+date: 2019-12-03
+title: Yarn workspaces and Docker
+description: Practical guide to using Yarn workspaces with Docker in monorepo projects, addressing dependency hoisting and Dockerfile setup for shared packages.
+coverPhoto: /rainy-in-hamburg-1016x877.webp
+coverPhotoAlt: Me and the rain in Hamburg
+---
+
+Let's say you have started building a project using yarn workspaces. Since you're developing some small “api” and “web” services you want to keep a “shared” package where you'll keep common js utilities for your project, like for example field validators or some constants or whatever else you find convenient to share. Yarn workspaces are perfect for such scenarios, but when it comes to packing your services to Dockerfiles you can stumble upon some new issues.
+
+Yarn workspaces will move (hoist) most of the dependencies of your services in root level node_modules folder. Because of that you will have to dockerize your service along with other necessary packages. Here's an example of Dockerfile for service “api” that is using “shared” package. This Dockerfile is intended to be executed in a context of root folder of your monorepo.
+
+```dockerfile
+FROM node:10-alpine as build
+
+WORKDIR /usr/src/app
+
+COPY package.json .
+COPY yarn.lock .
+COPY packages/shared ./packages/shared
+COPY packages/api ./packages/api
+
+RUN yarn install --pure-lockfile --non-interactive
+
+WORKDIR /usr/src/app/packages/shared
+RUN yarn build
+
+WORKDIR /usr/src/app/packages/api
+RUN yarn build
+
+FROM node:10-alpine
+
+WORKDIR /usr/src/app
+
+COPY package.json .
+COPY yarn.lock .
+
+COPY --from=build /usr/src/app/packages/shared/package.json /usr/src/app/packages/shared/package.json
+COPY --from=build /usr/src/app/packages/shared/dist /usr/src/app/packages/shared/dist
+
+COPY --from=build /usr/src/app/packages/api/package.json /usr/src/app/packages/api/package.json
+COPY --from=build /usr/src/app/packages/api/build /usr/src/app/packages/api/build
+
+ENV NODE_ENV production
+
+RUN yarn install --pure-lockfile --non-interactive --production
+
+WORKDIR /usr/src/app/packages/api
+
+CMD ["npm", "start"]
+```
+
+The core concept here is to copy not only your “api” service but also “shared” package and root folder core files. I'm also using here multi-staged Docker build to make a final image smaller.
+
+Let me know if you also stumble upon such challenge or maybe you have better ideas how to properly dockerize service from yarn workspaces monorepo?

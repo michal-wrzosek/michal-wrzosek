@@ -1,0 +1,18 @@
+---
+date: 2019-11-03
+title: Very simple js p2p serverless chat on WebRTC
+description: A walkthrough of building a simple peer-to-peer chat application in JavaScript using WebRTC, enabling direct, serverless communication between users with code examples and practical tips.
+coverPhoto: /me-and-a-busy-tokyo-crossing-2548x1220.webp
+coverPhotoAlt: Me on Shibuya crossing in Tokyo while I was working on my startup Mangaido.com
+---
+
+I recently wanted to check if it's possible to create a simple js chat with no servers in-between, so that you can directly talk with someone else via secure channel.
+
+I found that some browsers support **WebRTC**. It wasn't clear for me at the beginning how to deal with it but eventually I was able to establish p2p connection with my friends in different networks. There is still a need for STUN/TURN servers to establish connection but as far as I know it's secure.
+
+Currently demo chat works in **Firefox**. I had some issues with STUN servers in Chrome. I will gradually work on improving that thing. I encourage you to try out your own builds on WebRTC :)
+
+The idea is that HOST get a connection code. HOST send to SLAVE his code somehow (through some other chat for example). Once the HOST paste code from SLAVE, p2p connection starts and they can talk, wow :D
+
+You can find out source code and demo app here:
+[https://github.com/michal-wrzosek/p2p-chat](https://github.com/michal-wrzosek/p2p-chat)

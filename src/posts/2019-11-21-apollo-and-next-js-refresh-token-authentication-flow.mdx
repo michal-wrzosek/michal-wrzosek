@@ -1,0 +1,102 @@
+---
+date: 2019-11-21
+title: Apollo & Next.js refresh token authentication flow
+description: I will explain a concept of authentication flow I'm exercising recently in my full-stack projects. If you're crazy enough to build your own authentication with Apollo and JWT this may be an inspiration for you.
+coverPhoto: /tokyo-breakfast-1600x1200.webp
+coverPhotoAlt: Picture of me doing breakfast in Tokyo share-house I was living in while working @ Mangaido.com
+---
+
+I will explain a concept of authentication flow I'm exercising recently in my full-stack projects. If you're crazy enough to build your own authentication with Apollo and JWT this may be an inspiration for you.
+
+### The stack I'm using:
+
+API:
+
+- express.js
+- apollo-server-express
+- some database (mongo, postgres …)
+- JSON Web Tokens
+
+Frontend app:
+
+- next.js
+- apollo-boost
+- react-apollo (I use hooks)
+- next-with-apollo
+
+### Full user flow with Server Side Rendering
+
+- User hits some url that is restricted for logged-in users
+- Next.js server takes user's cookies and [push them](https://gist.github.com/michal-wrzosek/ce34cb7b886f2dd5af0e6b0452bdd3d9) to ApolloClient instance
+- Next.js server will pre-render a page
+- During pre-rendering ApolloClient will query a `refreshToken` endpoint
+- ApolloServer receives a query and is looking for a `refreshToken` cookie. This user has no cookie so ApolloServer sends back [some Authentication Error](https://www.apollographql.com/docs/apollo-server/data/errors)
+- Next.js receives an error and is rendering login form
+- User fill out login form and click "Log in" button
+- ApolloClient is sending a mutation to `login` endpoint with user's email and password
+- ApolloServer receives a mutation and checks user's credentials. User has sent correct data so ApolloServer responds with a JWT `accessToken` and `expiryDate` which is something short in future, like 5 min. This data is sent in a body of request (not cookie). ApolloServer is sending also Secure and HttpOnly cookie with `refreshToken`. Refresh [token's hash](https://security.stackexchange.com/questions/151257/what-kind-of-hashing-to-use-for-storing-rest-api-tokens-in-the-database) is also saved in database. Refresh token is a long running token — it can be valid for days or months.
+- ApolloClient receives `accessToken` and `expiryDate`. Access token will be stored as JS variable (no local storage or cookies).
+- Frontend app will now set a timer to query `refreshToken` endpoint before `expiryDate`.
+- Frontend app can now query some resources that are restricted to logged-in users. Let say we want to query user's "posts".
+- ApolloClient is querying user's "posts" with "Authorization" header that have a value: `Bearer <accessToken here>`
+- ApolloServer receives a query. It's a restricted resource so server is checking if user is logged in. Server will extract `accessToken` from a header and check if it's a valid JSON Web Token. It's a valid token, so server is sending back "posts" resources.
+- ApolloClient happily receives "posts"
+
+![A few moments later ...](/a-few-moments-later-1280x720.webp)
+
+- Couple minutes later just before `accessToken` will expire ApolloClient is querying `refreshToken` endpoint.
+- ApolloServer receives a query. Server check `refreshToken` cookie. It's there. Server will now check in a database if this token is valid. This token is valid so server is sending back new JWT `accessToken` and `expiryDate`. Also, server is creating new `refreshToken` and sending it as a Secure and HttpOnly cookie. Old `refreshToken` expiry date is set in a database to expire in 30 seconds. (It's not expired immediately in case there are still some slow pending requests coming to server)
+- ApolloClient is receiving back new `accessToken` and new `expiryDate`. From now on, next queries will use new `accessToken`. Also, we're setting new timer to refresh token before `expiryDate`.
+- User closes our website and `accessToken` and `expiryDate` is gone. We do not store them in local storage or cookies that are accessible by JavaScript for security reasons. The only thing that stays with the user is `refreshToken` cookie. Keeping this token in a Secure and HttpOnly cookie is more secure because it's not accessible by JavaScript.
+
+![Several days later ...](/several-days-later-1152x864.webp)
+
+- Some time later our user is coming back to our page.
+- Next.js server is again trying to pre-render the page. ApolloClient using user's cookies is querying `refreshToken` endpoint.
+- ApolloServer receives query, but this time, `refreshToken` cookie is there and it is valid. We are sending back new `accessToken` and `expiryDate`. Old `refreshToken` is set in database to expire in couple seconds.
+- Next.js app is now rendering immediately a page with restricted resource for logged in user.
+
+...
+
+### AccessToken
+
+It's a signed JWT token that is holding some user's unique identifier like "id" or "email". Its expiry date is short, like 5 minutes. Users are sending their requests with this token in ["Authorization" header](https://www.jwt.io/introduction#what-is-json-web-token). Server is sending this tokens to clients in body of a request — not as a cookie.
+
+### RefreshToken
+
+It's some random string that we associate with a user and keep [a hash](https://security.stackexchange.com/questions/151257/what-kind-of-hashing-to-use-for-storing-rest-api-tokens-in-the-database) of this token in a database. Refresh token should be sent to user with some identifier so that you can compare token with correct hash from a database. It's important that cookie in which RefreshToken is going to be stored is Secure and HttpOnly.
+
+### Apollo & SSR with Next.js
+
+Believe me, it can be super tricky to set up server side rendering with Apollo. The thing is when you're rendering a page on server, you need to use `refreshToken` cookie from user. Also another tricky part is making sure all queries you care about will be fired on server side — like `refreshToken` query. I personally use apollo hooks like useQuery and useMutation. Just in case you don't know — useMutation hook will not be resolved on server, only useQuery will work. SSR usually brings lots of troubles so be careful. I successfully used library called [`next-with-apollo`](https://github.com/lfades/next-with-apollo). I highly recommend using it. Especially if you use TypeScript — typing your own withApollo HOC can be a painful experience.
+
+```typescript
+import withApollo from "next-with-apollo";
+import ApolloClient, { InMemoryCache } from "apollo-boost";
+
+export default (uri: string) =>
+  withApollo(
+    (props) =>
+      new ApolloClient({
+        uri,
+        cache: new InMemoryCache().restore(props.initialState || {}),
+        credentials: "include",
+        ...(props.ctx && props.ctx.req
+          ? {
+              headers: {
+                cookie: props.ctx.req.headers["cookie"],
+              },
+            }
+          : {}),
+      }),
+    { getDataFromTree: "ssr" }
+  );
+```
+
+### Ending notes
+
+I'm currently working on an open-sourced ultimate full-stack monorepo boilerplate with client-facing `app` in next.js (SSR for SEO), `admin` app in create react app and graphql `api`. I'll post a link here once it will be ready for a public use.
+
+### Useful resources:
+
+[https://hasura.io/blog/best-practices-of-using-jwt-with-graphql](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql)

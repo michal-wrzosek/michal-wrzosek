@@ -1,0 +1,68 @@
+---
+date: 2024-10-17
+title: How to inject runtime env vars to your Next.js app
+description: Learn how to inject runtime environment variables into your Next.js application by leveraging server-side execution and careful handling of 'use client' clauses. The method involves splitting the layout into a server-side and a client-side component and using 'unstable_noStore' to serve environment configuration dynamically.
+coverPhoto: /mazury-1000x420.webp
+coverPhotoAlt: Me relaxing at Mazury, Poland
+---
+
+It is very often beneficial to load environment variables during runtime to your client side, for example, when you want a single Docker image to use in different environments. This would not be possible when using build-time environments (NEXT*PUBLIC*...). Surprisingly, it may not be that obvious how to do so...
+
+Here's one way you can do it:
+
+You have your dynamic layout that will be executed on the server side that injects the env vars config to the client side. You can't use the "use client" clause here.
+
+`/src/app/layout.tsx`
+
+```tsx
+import { PropsWithChildren } from "react";
+import { unstable_noStore } from "next/cache";
+import { LayoutClient } from "./layout-client";
+
+export default function Layout({ children }: PropsWithChildren) {
+  // This is important!
+  unstable_noStore();
+
+  // some example config to be injected to the client side
+  const config = {
+    apiEndpoint: process.env.API_ENDPOINT!,
+    appEnvironment: process.env.APP_ENVIRONMENT!,
+  };
+
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="favicon.ico" />
+      </head>
+      <body>
+        <LayoutClient config={config}>{children}</LayoutClient>
+      </body>
+    </html>
+  );
+}
+```
+
+Then you have your "client" layout:
+
+`/src/app/layout-client.tsx`
+
+```tsx
+"use client";
+
+import { PropsWithChildren } from "react";
+
+export const LayoutClient = ({
+  config,
+  children,
+}: PropsWithChildren<{
+  apiEndpoint: string;
+  appEnvironment: string;
+}>) => {
+  // and here you are now on the "client" and basically,
+  // you can do whatever you want with your config
+};
+```
+
+I split the layout into "server" and "client" because I like to push the config through the React Context so that it will be available to all the components and this of course requires you to be within the "use client" clause.
+
+In short, to make this work you need "unstable_noStore" and careful "use client" clause placement.

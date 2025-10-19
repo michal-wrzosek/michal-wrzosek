@@ -1,11 +1,13 @@
-## Michał Wrzosek - my personal website
+# Michał Wrzosek - my personal website
 
-[michal.wrzosek.pl](http://michal.wrzosek.pl)
+![Picture of Michał seating in front of retro PC in the jungle](public/cover-2048x640.png)
 
-# Deployment
+As a web developer, I'm passionate about creating high-performance applications, open-source contributions, and building innovative solutions.
 
-```
-docker image build --no-cache -t michal-wrzosek-pl-web:0.1.2 . && \
-  docker tag michal-wrzosek-pl-web:0.1.2 eu.gcr.io/michal-wrzosek-pl/michal-wrzosek-pl-web-web:0.1.2 && \
-  docker push eu.gcr.io/michal-wrzosek-pl/michal-wrzosek-pl-web-web:0.1.2
-```
+https://michal.wrzosek.pl
+
+Other links:
+
+https://x.com/xforartworks
+https://www.linkedin.com/in/michal-wrzosek-cv/
+https://klarluft.com

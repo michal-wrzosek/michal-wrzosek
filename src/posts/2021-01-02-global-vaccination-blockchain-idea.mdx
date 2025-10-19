@@ -1,0 +1,66 @@
+---
+date: 2021-01-02
+title: Global vaccination blockchain idea
+description: A conceptual proposal for a global COVID-19 vaccination certificate system using blockchain technology, focusing on privacy, verification, and authority management, with implementation ideas and discussion.
+coverPhoto: /airport-1920x1280.webp
+---
+
+I was wondering how we could solve the oncoming global problem of vaccination proof. For example, I can imagine in near future in order to be able to get on to the aeroplane, one will have to provide proof of COVID-19 vaccination. Here's how I can imagine a worldwide blockchain solution.
+
+### Base idea
+
+There's a publicly available blockchain that shows all the issued COVID-19 vaccination certificates. Besides that, this blockchain keeps the information about authorities that can issue them.
+
+Since the blockchain is publicly available for everyone, there is no personal information that would allow someone to know exactly who was vaccinated — and this is the biggest challenge here — read further.
+
+### The story
+
+You have been vaccinated and after that, you are given your certificate proof.
+
+The certificate proof document consists of:
+
+- certificate number
+- certificate **key Z**
+- your passport number and passport country code
+
+Later, you're checking-in at the airport. You're being asked to provide your passport and your vaccination certificate. The person, as usual, first verifies your identity by checking your passport. Next, your certificate proof is crossed-check with data in the global vaccination blockchain. If everything is ok, you're good to take your flight.
+
+### The certificate
+
+The certificate is a block on the blockchain.
+
+Data available on the block:
+
+- certificate number
+- the public key of authority creating this certificate
+- random **code X**
+- **code X** encrypted with vaccinated person's passport number, passport country code and randomly generated certificate **key Z**
+
+The idea here is not to keep passport numbers in the blockchain but rather use them as a part of the encryption key. That way we're trying to secure people's personal data.
+
+### Cross-checking certificate
+
+In order to prove that a certificate is valid. You need to locate the certificate number on the blockchain. Then you use passport number and passport country code, all combined with the certificate key Z to decrypt the data on the blockchain (code X). If the certificate code X was encrypted with this passport number, passport country code and key Z, you have proof that this person was indeed vaccinated.
+
+### The authorities
+
+Additionally, we're keeping the information about all the authorities that can issue certificates. At the very beginning of the blockchain, there was a single authority. This authority created authorities for other countries. Later on, each country created separate authorities, that are actually responsible for vaccination (doctors/hospitals etc.). Each authority has a public and a private key that are used to push data into the blockchain.
+
+The protocol of this blockchain allows creating blocks that can revoke the authorities and certificates by authorities of a higher order.
+
+### What do you think?
+
+What are your ideas? Can you spot any flaws here? Any ideas for implementation? How this could be improved? Let me know your thoughts.
+
+### My implementation on Ethereum
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/5WDcC1xMmu0?si=E-U7d94MeLknHUsS"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+></iframe>

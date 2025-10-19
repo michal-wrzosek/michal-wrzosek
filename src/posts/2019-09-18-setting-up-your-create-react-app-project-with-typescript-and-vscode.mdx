@@ -1,0 +1,152 @@
+---
+date: 2019-09-18
+title: Setting up your create-react-app project with TypeScript & VSCode
+description: Step-by-step guide to configuring a new Create React App project with TypeScript and VSCode, including setup for eslint, prettier, and root import aliases for improved development workflow.
+---
+
+I found myself copy pasting the same configuration over and over every time I start new “create-react-app” project, so here is how I always start.
+
+_I'm using create-react-app v3.1.1 as of writing this document (September 18th, 2019)_
+
+I will show here how to setup a project in a certain configuration:
+
+- create-react-app with TypeScript
+- VSCode as code editor
+- eslint with prettier (style on save)
+- set up root alias for local imports (“components/Button.tsx” instead of “../../../../components/Button.tsx”)
+
+Bootstrap a new typescript project:
+
+```bash
+npx create-react-app create-react-app-boilerplate --typescript && cd create-react-app-boilerplate
+```
+
+Install all dev dependencies (eslint + prettier):
+
+```bash
+npm i -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier eslint-config-prettier eslint-config-react eslint-plugin-prettier
+```
+
+Add [`./.eslintrc.js`](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master#diff-e4403a877d80de653400d88d85e4801a) file
+
+```javascript
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  extends: [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+  ],
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+};
+```
+
+Add [`./.eslintignore`](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master#diff-1b0fd5322de42e11c8786543f74c7c41) file
+
+```.eslintignore
+src/serviceWorker.ts
+```
+
+Add [`./.prettierrc.js`](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master#diff-1b0fd5322de42e11c8786543f74c7c41) file (it's up to you what settings you like here, don't judge me for “semi: true”)
+
+```javascript
+module.exports = {
+  semi: true,
+  trailingComma: "all",
+  singleQuote: true,
+  printWidth: 120,
+  tabWidth: 2,
+};
+```
+
+Add [`./.vscode/settings.json`](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master#diff-5b46cfda0ddaed371f52aa24ea2b0b2a) file
+
+```json
+{
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ],
+  "editor.renderWhitespace": "boundary"
+}
+```
+
+Edit [`./package.json`](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master#diff-e5e546dd2eb0351f813d63d1b39dbc48) file and update “scripts” section so that you will actually run eslint on npm run test along with unit tests. Also it's sometimes useful to run eslint with --fix flag (just change “scripts” section, don't change other settings):
+
+```json
+{
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test:unit": "react-scripts test",
+    "test:lint": "eslint --ext .ts --ext .tsx .",
+    "test:lint:fix": "npm run lint -- --fix",
+    "test": "npm run test:lint && npm run test:unit"
+  }
+}
+```
+
+Add “baseUrl” option equal to“src” within “compilerOptions” section in [`./tsconfig.json`](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master#diff-e5e546dd2eb0351f813d63d1b39dbc48) file (just add this option, don't change other settings):
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  }
+}
+```
+
+You should also install these extensions in your VSCode:
+
+- ESLint (dbaeumer.vscode-eslint)
+- Prettier — Code formatter (esbenp.prettier-vscode)
+
+### Testing
+
+Another thing worth mentioning is that it is nowadays a popular solution to use react-testing-library by Kent C. Dods. Here's how you can add it to your project:
+
+Install these deps:
+
+```bash
+npm i -D @testing-library/react @testing-library/jest-dom
+```
+
+Add [`src/setupTests.ts`](https://github.com/michal-wrzosek/create-react-app-boilerplate/blob/master/src/setupTests.ts) file with this import:
+
+```typescript
+import "@testing-library/jest-dom/extend-expect";
+```
+
+And finally update default test src/App.test.tsx
+
+```typescript
+import React from "react";
+import { render } from "@testing-library/react";
+import App from "./App";
+it("renders without crashing", () => {
+  const { getByText } = render(<App />);
+  expect(getByText("Learn React")).toBeInTheDocument();
+});
+```
+
+### Repo
+
+You can check this diff with all the configuration I showed you here:
+
+[https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master](https://github.com/michal-wrzosek/create-react-app-boilerplate/compare/c329d3dc3892bc3e19c78d06a840edb8975078c3...master)
