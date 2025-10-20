@@ -29,6 +29,7 @@ export const CV = ({ data }: Props) => (
     <div className="CV__paper">
       <div className="CV__person">
         <div className="CV__person__avatar">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             alt="Avatar"
             className="CV__person__avatar__img"
@@ -135,7 +136,6 @@ export const CV = ({ data }: Props) => (
         <div className="CV__section__content">
           <div className="CV__jobs">
             {data.jobs.map((job, jobIndex) => (
-              // eslint-disable-next-line react/no-array-index-key
               <div key={jobIndex} className="CV__jobs__job">
                 <div className="CV__jobs__job__dates">
                   <div className="CV__jobs__job__dates__wrapper">
@@ -157,7 +157,6 @@ export const CV = ({ data }: Props) => (
                   </div>
                   <div className="CV__jobs__job__details__description">
                     {job.description.map((description, descriptionIndex) => (
-                      // eslint-disable-next-line react/no-array-index-key
                       <div
                         key={descriptionIndex}
                         className="CV__jobs__job__details__description__paragraph"
@@ -168,7 +167,6 @@ export const CV = ({ data }: Props) => (
                   </div>
                   <div className="CV__jobs__job__details__buzzwords">
                     {job.buzzwords.map((buzzword, buzzwordIndex) => (
-                      // eslint-disable-next-line react/no-array-index-key
                       <div
                         key={buzzwordIndex}
                         className="CV__jobs__job__details__buzzwords__buzzword"
@@ -191,7 +189,6 @@ export const CV = ({ data }: Props) => (
           <div className="CV__side-projects">
             {data.sideProjects.map((sideProject, sideProjectIndex) => (
               <a
-                // eslint-disable-next-line react/no-array-index-key
                 key={sideProjectIndex}
                 className="CV__side-projects__side-project"
                 href={sideProject.url}
@@ -219,7 +216,6 @@ export const CV = ({ data }: Props) => (
         <div className="CV__section__content">
           <div className="CV__education">
             {data.education.map((study, studyIndex) => (
-              // eslint-disable-next-line react/no-array-index-key
               <div key={studyIndex} className="CV__education__study">
                 <div className="CV__education__study__dates">
                   <div className="CV__education__study__dates__wrapper">
@@ -262,7 +258,6 @@ export const CV = ({ data }: Props) => (
               <div className="CV__skills__skill__label">Languages:</div>
               <div className="CV__skills__skill__list">
                 {data.skills.languages.map((language, languageIndex) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <div
                     key={languageIndex}
                     className="CV__skills__skill__list__item"
@@ -296,7 +291,6 @@ export const CV = ({ data }: Props) => (
               <div className="CV__skills__skill__label">I love:</div>
               <div className="CV__skills__skill__list">
                 {data.skills.iLove.map((love, loveIndex) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <div
                     key={loveIndex}
                     className="CV__skills__skill__list__item"
@@ -316,7 +310,6 @@ export const CV = ({ data }: Props) => (
               <div className="CV__skills__skill__label">Other:</div>
               <div className="CV__skills__skill__list">
                 {data.skills.other.map((skill, skillLove) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <div
                     key={skillLove}
                     className="CV__skills__skill__list__item"
