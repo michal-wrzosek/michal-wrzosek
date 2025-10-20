@@ -18,12 +18,12 @@ const menuItems = [
 
 function DesktopMenuItem({ text, href }: MenuItemProps) {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = href === "/" ? pathname === href : pathname.startsWith(href);
 
   return (
     <li
       className={clsx(
-        "rounded-full h-8 inline-flex items-center px-4",
+        "rounded-full h-8 inline-flex items-center px-4 transition-colors duration-150 cursor-pointer hover:bg-foreground hover:text-background",
         isActive && "bg-foreground text-background"
       )}
     >
@@ -46,7 +46,7 @@ export function DesktopMenu() {
 
 function MobileMenuItem({ text, href }: MenuItemProps) {
   const pathname = usePathname();
-  const isActive = pathname.startsWith(href);
+  const isActive = href === "/" ? pathname === href : pathname.startsWith(href);
 
   return (
     <li className="py-2 text-center">

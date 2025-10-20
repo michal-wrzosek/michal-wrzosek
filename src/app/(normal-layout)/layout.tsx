@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="transition-colors duration-1000">
         <div>
           <div className="w-full md:w-320 mx-auto p-6 relative">
             <div className="font-semibold text-2xl md:text-6xl">
