@@ -39,7 +39,7 @@ export default function RootLayout({
             </div>
           </div>
           {children}
-          <footer className="w-full mb-14 md:mb-0 md:w-320 mx-auto bg-foreground p-6 text-background flex flex-col items-center gap-2 text-sm">
+          <footer className="w-full mb-14 md:mb-0 md:w-320 mx-auto border-t-2 p-6 flex flex-col items-center gap-2 text-sm">
             <div className="font-semibold">
               © {new Date().getFullYear()} Michał Wrzosek. All rights reserved.
             </div>
@@ -59,7 +59,7 @@ export default function RootLayout({
                 rel="noopener noreferrer"
                 title="GitHub"
               >
-                <GitHubIcon className="size-5 text-background hover:text-gray-300" />
+                <GitHubIcon className="size-5 hover:text-gray-300" />
               </a>
               <a
                 href="https://x.com/xforartworks"
@@ -67,7 +67,7 @@ export default function RootLayout({
                 rel="noopener noreferrer"
                 title="Twitter"
               >
-                <TwitterIcon className="size-5 text-background hover:text-gray-300" />
+                <TwitterIcon className="size-5 hover:text-gray-300" />
               </a>
               <a
                 href="https://www.linkedin.com/in/michal-wrzosek-cv/"
@@ -75,7 +75,7 @@ export default function RootLayout({
                 rel="noopener noreferrer"
                 title="LinkedIn"
               >
-                <LinkedinIcon className="size-4 text-background hover:text-gray-300" />
+                <LinkedinIcon className="size-4 hover:text-gray-300" />
               </a>
             </div>
           </footer>
