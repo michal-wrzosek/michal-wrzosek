@@ -30,7 +30,7 @@ export default function RootLayout({
                 Web Developer
               </Link>
             </div>
-            <div className="font-semibold mt-4 text-xs">
+            <div className="font-semibold mt-4 text-xs md:text-base">
               (Rotterdam, The Netherlands)
             </div>
             <div className="absolute top-0 right-0 mt-6 mr-6 flex gap-4 items-center">
