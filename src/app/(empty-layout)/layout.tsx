@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import { defaultMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Michał Wrzosek",
-  description: "Web Developer",
+  ...defaultMetadata,
+  title: `${defaultMetadata.title} - CV`,
 };
 
 export default function RootLayout({

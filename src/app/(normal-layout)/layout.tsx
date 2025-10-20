@@ -6,11 +6,10 @@ import { GitHubIcon } from "@/components/icons/github-icon";
 import { TwitterIcon } from "@/components/icons/twitter-icon";
 import { LinkedinIcon } from "@/components/icons/linkedin-icon";
 import Link from "next/link";
+import { defaultMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Michał Wrzosek",
-  description:
-    "As a web developer, I'm passionate about creating high-performance applications, open-source contributions, and building innovative solutions.",
+  ...defaultMetadata,
 };
 
 export default function RootLayout({
