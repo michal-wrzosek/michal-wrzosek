@@ -22,6 +22,25 @@ const cvData: CvData = {
   jobs: [
     {
       buzzwords: [
+        "Vue.js",
+        "Vuetify",
+        "ECharts",
+        "SignalR",
+        "Typescript",
+        "Azure DevOps pipelines",
+        "Azure Cloud",
+      ],
+      company: "Eneco",
+      dateFinished: "present",
+      dateStarted: "2025",
+      description: [
+        "Contracted to deliver dashboarding solution for Eneco trading department.",
+      ],
+      location: "Rotterdam, NETHERLANDS",
+      position: "Senior Software Engineer",
+    },
+    {
+      buzzwords: [
         "React.js",
         "GraphQL",
         "Node.js",
@@ -33,9 +52,11 @@ const cvData: CvData = {
         "Azure Cloud",
       ],
       company: "Shell",
-      dateFinished: "present",
+      dateFinished: "2025",
       dateStarted: "2020",
-      description: ["Contract assignment @ Shell"],
+      description: [
+        "Contracted to deliver various applications providing all sorts of trading insights to Shell traders.",
+      ],
       location: "Rotterdam, NETHERLANDS",
       position: "Senior Software Engineer",
     },
