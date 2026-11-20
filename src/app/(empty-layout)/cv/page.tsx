@@ -33,7 +33,7 @@ const cvData: CvData = {
       dateFinished: "present",
       dateStarted: "2026",
       description: [
-        "Contracted to deliver EHR (Electronic Helth Record) solution for US healthcare providers.",
+        "Contracted to deliver EHR (Electronic Health Record) solution for US healthcare providers.",
       ],
       location: "Remote",
       position: "Product Engineer",
