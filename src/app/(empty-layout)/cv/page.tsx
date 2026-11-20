@@ -22,6 +22,24 @@ const cvData: CvData = {
   jobs: [
     {
       buzzwords: [
+        "React.js",
+        "Next.js",
+        "Typescript",
+        "Node.js",
+        "Clerk",
+        "Stripe",
+      ],
+      company: "WellSync",
+      dateFinished: "present",
+      dateStarted: "2026",
+      description: [
+        "Contracted to deliver EHR (Electronic Helth Record) solution for US healthcare providers.",
+      ],
+      location: "Remote",
+      position: "Product Engineer",
+    },
+    {
+      buzzwords: [
         "Vue.js",
         "Vuetify",
         "ECharts",
@@ -31,7 +49,7 @@ const cvData: CvData = {
         "Azure Cloud",
       ],
       company: "Eneco",
-      dateFinished: "present",
+      dateFinished: "2026",
       dateStarted: "2025",
       description: [
         "Contracted to deliver dashboarding solution for Eneco trading department.",
@@ -95,9 +113,9 @@ const cvData: CvData = {
       dateFinished: "present",
       dateStarted: "2018",
       description: [
+        "- pitupitu.chat - Voice assistant app for orchestrating your coding agents",
+        "- gitwarren.com - OpenSource code review app for agentic workflows",
         "- bitbond.com - Reviewing Solidity contracts and doing Solidity workshops for German banks. Conducting Solidity interviews",
-        "- zklar.com - Secure Ethereum blockchain payment technology powered by zero-knowledge proofs and rollups",
-        "- tzklar.com - Building blocks for Tezos contracts.",
       ],
       location: "Rotterdam, NETHERLANDS",
       position: "Founder",
